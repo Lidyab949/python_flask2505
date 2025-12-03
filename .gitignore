@@ -1,0 +1,18 @@
+# Files that will not be uploaded to our github Flask repository
+# Python
+*.pyc
+*.pyo
+__pycache__/
+*.pyd
+*.db
+
+# Flask
+instance/
+*.log
+*.pot
+*.pyc
+*.pyo
+
+# VSCode
+.vscode/
+
