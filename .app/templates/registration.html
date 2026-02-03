@@ -8,54 +8,73 @@
     Welcome to the DS 2505 Registration Page
 {% endblock %}
 
+{% block embed_style_or_script %}
+    {# Get the bootstrap CSS from the CDN #}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrapp@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet" crossorigin="anonymous"/>
+{% endblock %}
+
+{# Flash message #}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div clas="alert alert-{{category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-labe;="close"/>
+
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
 {% block page_content %}
   {# Registration Form #}
- <form id="frmRegister" method="post" action="">
-     {{ form.hidden_tag() }} {# Our site's CSRF token #}
-     <fieldset>
-         <legend>Personal Details</legend>
-         <div class="mb-3">
-             {{ form.names.label(class="form-label" }}
-             {{ form.names(class="form-control", placeholder="Your names") }}
-         </div>
-         <div class="mb-3">
-             {{ form.birth_date.label(class="form-label" }}
-             {{ form.birth_date(class="form-control", placeholder="yyyy-mm-dd") }}
-         </div>
-          <div class="mb-3">
-             {{ form.gender.label(class="form-label" }}
-             {% for subfield in form.gender %}
-              <div class="form-check">
-                  {{ subfield(class="form-check-input") }}
-                  {{ subfield.label(class="form-check-label" }}
-              </div>
-         </div>
-          <div class="mb-3">
-             {{ form.phone.label(class="form-label" }}
-             {{ form.phone(class="form-control", placeholder="25472456789") }}
-         </div>
-          <div class="mb-3">
-             {{ form.email.label(class="form-label" }}
-             {{ form.email(class="form-control", placeholder="me@email.com") }}
-         </div>
-          <div class="mb-3">
-             {{ form.password.label(class="form-label" }}
-             {{ form.password(class="form-control", placeholder="Secret password") }}
-         </div>
-          <div class="mb-3">
-             {{ form.confirm_password.label(class="form-label" }}
-             {{ form.confirm_password(class="form-control", placeholder="Confirm secret password") }}
-         </div>
-          <div class="mb-3">
-             {{ form.submit(class="btn btn-primary" }}
-             {{ form.reset(class="btn btn-secondary" }}
-         </div>
+    <div id="container">
+     <form id="frmRegister" method="post" action="">
+         {{ form.hidden_tag() }} {# Our site's CSRF token #}
+         <fieldset>
+             <legend>Personal Details</legend>
+             <div class="mb-3">
+                 {{ form.names.label(class="form-label" }}
+                 {{ form.names(class="form-control", placeholder="Your names") }}
+             </div>
+             <div class="mb-3">
+                 {{ form.birth_date.label(class="form-label" }}
+                 {{ form.birth_date(class="form-control", placeholder="yyyy-mm-dd") }}
+             </div>
+              <div class="mb-3">
+                 {{ form.gender.label(class="form-label" }}
+                 {% for subfield in form.gender %}
+                  <div class="form-check">
+                      {{ subfield(class="form-check-input") }}
+                      {{ subfield.label(class="form-check-label" }}
+                  </div>
+             </div>
+              <div class="mb-3">
+                 {{ form.phone.label(class="form-label" }}
+                 {{ form.phone(class="form-control", placeholder="25472456789") }}
+             </div>
+              <div class="mb-3">
+                 {{ form.email.label(class="form-label" }}
+                 {{ form.email(class="form-control", placeholder="me@email.com") }}
+             </div>
+              <div class="mb-3">
+                 {{ form.password.label(class="form-label" }}
+                 {{ form.password(class="form-control", placeholder="Secret password") }}
+             </div>
+              <div class="mb-3">
+                 {{ form.confirm_password.label(class="form-label" }}
+                 {{ form.confirm_password(class="form-control", placeholder="Confirm secret password") }}
+             </div>
+              <div class="mb-3">
+                 {{ form.submit(class="btn btn-primary" }}
+                 {{ form.reset(class="btn btn-secondary" }}
+             </div>
 
-     </fieldset>
- </form>
-<div>
-    <p>Already have an account? <a href="#">Login/Signin </a></p>
-</div>
-
-
-{% endblock %}
+         </fieldset>
+     </form>
+    <div>
+        <p>Already have an account? <a href="{{ url_for('login')}}">Login/Signin </a></p>
+    </div>
+    </div>
+    {% endblock %}

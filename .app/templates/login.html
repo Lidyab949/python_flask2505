@@ -7,9 +7,28 @@
 {% block page_heading %}
    Login/Sign-in Page
 {% endblock %}
+{% block embed_style_or_script %}
+    {# Get the bootstrap CSS from the CDN #}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrapp@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet" crossorigin="anonymous"/>
+{% endblock %}
 
 {% block page_content %}
-  {# TODO: add flash message for failed login #}
+    {# TODO: Add Flash message for failed login #}
+    {# Flash message #}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div clas="alert alert-{{category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-labe;="close"/>
+
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+
   {# Login Form #}
   <form id="frmLogin" method="post" action="">
       {{ form.hidden_tag() }} {# The site's CSRF token #}
@@ -30,7 +49,7 @@
           {{ form.submit (class="btn btn-primary") }}
       </div>
   <div class="mb-3">
-      <p>Don&rsquo;t have an account? <a href="#">Register/Sign-up</a></p>
+      <p>Don&rsquo;t have an account? <a href="{{ url_for('sign-up')}}">Register/Sign-up</a></p>
       </div>
   </form>
   <p>Your browser is:<br/>{{user_agent}}<p/>{% endblock %}

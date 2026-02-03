@@ -1,0 +1,20 @@
+{# The DS 2505 client 401 Unauthorized page #}
+{# Inherit the code from the base template #}
+{% extends 'base.html' %}
+
+{# specify the page title #}
+{% block page_title %} 401 Unauthorized {% endblock page_title %}
+
+{% block page_heading %}
+    401 - Unauthorized
+{% endblock %}
+
+{% block page_content %}
+<p><strong>Access Denied:</strong> Unauthorised: you must login to access/view this page.</p>
+
+{# Redirect the user to the site's home page #}
+<a href="{{ url_for('index') }}">Return to home</a>
+
+{# TODO: Redirect the user to the login page #}
+{# <a href="{{ url_for('login') }}">Return to login</a> #}
+{% endblock %}
