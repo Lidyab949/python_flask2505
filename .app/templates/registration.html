@@ -2,11 +2,13 @@
 {# Inherit the code from the base template #}
 {% extend 'base.html' %}
 {# specify the page title #}
-{% block page_title %} Registration {% endblock page_title %}
+{% block page_title %} Register {% endblock page_title %}
 {% block page_title %} {% endblock page_title %}
 {% block page_heading %}
-    Welcome to the DS 2505 Registration Page
+    Welcome to the DS 2505 Registration/Sign-up Page
 {% endblock %}
+
+{% block page_content %}
 
 {% block embed_style_or_script %}
     {# Get the bootstrap CSS from the CDN #}
@@ -66,12 +68,12 @@
                  {{ form.confirm_password.label(class="form-label" }}
                  {{ form.confirm_password(class="form-control", placeholder="Confirm secret password") }}
              </div>
+         </fieldset>
+
               <div class="mb-3">
                  {{ form.submit(class="btn btn-primary" }}
                  {{ form.reset(class="btn btn-secondary" }}
              </div>
-
-         </fieldset>
      </form>
     <div>
         <p>Already have an account? <a href="{{ url_for('login')}}">Login/Signin </a></p>

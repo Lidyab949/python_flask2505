@@ -40,7 +40,7 @@
           </div>
            <div class="mb-3">
               {{ form.password(class="form-label") }}}
-              {{ form.password(class="form-control", placeholder="secret password")) }}
+              {{ form.password(class="form-control", placeholder="secr3t passw0rd")) }}
           </div>
 
       </fieldset>
@@ -49,7 +49,7 @@
           {{ form.submit (class="btn btn-primary") }}
       </div>
   <div class="mb-3">
-      <p>Don&rsquo;t have an account? <a href="{{ url_for('sign-up')}}">Register/Sign-up</a></p>
+      <p>Don&squo; have an account? <a href="{{ url_for('sign-up')}}">Register/Sign-up</a></p>
       </div>
   </form>
   <p>Your browser is:<br/>{{user_agent}}<p/>{% endblock %}
